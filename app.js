@@ -3,11 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var hike = require('./routes/hike');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+app.get('/hikes', hike.index);
+app.post('/add_hike', hike.add_hike);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
